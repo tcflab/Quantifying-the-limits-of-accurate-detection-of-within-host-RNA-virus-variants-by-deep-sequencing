@@ -16,7 +16,7 @@ color7 <- rgb(255,255,255, maxColorValue=255)
 
 
 ###############################################################################
-# Figure 5: Normalization does not impact SNP detection
+# Figure 6: Normalization does not impact SNP detection
 ###############################################################################
 data=read.table("~/Documents/CA04_SNP_detection/subsampling_with_bbnorm/1000x_variant_calls/subsample_comparison.txt", header=T, stringsAsFactors=F, na.string=c(NA,"NA","na"), sep="\t", col.names=c("site","replicate","group","subsampled_freq","frequency"))
 

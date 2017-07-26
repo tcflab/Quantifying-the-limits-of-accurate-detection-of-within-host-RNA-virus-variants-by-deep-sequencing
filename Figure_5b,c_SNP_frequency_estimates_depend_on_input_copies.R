@@ -19,10 +19,10 @@ color7 <- rgb(255,255,255, maxColorValue=255)
 
 
 ###############################################################################
-# Figure 4: SNPs detected more than 1 time means, sd
+# Figure 5: Input DNA copy determines SNP frequency estimation
 ###############################################################################
 
-#### FIGURE 4A: MEAN AND STANDARD DEVIATION OF SNPS DETECTED >1 TIME ##########
+#### FIGURE 5B: MEAN AND STANDARD DEVIATION OF SNPS DETECTED >1 TIME - PCR-free dataset ##########
 
 # read in the combined dataframe. 
 data=read.table("~/Documents/CA04_SNP_detection/data/unbiased_data/amplicon_vs_unbiased.txt", header=T, stringsAsFactors=F, na.string=c(NA,"NA","na"), sep="\t", col.names=c("reference_position","type","length","reference","allele","linkage","zygosity","count","coverage","frequency","hyper-allelic","fr_balance","average_quality","input","replicate","minimum_coverage_required","method","dups_removed"))
@@ -145,7 +145,7 @@ mean_variance_df$d <- factor(mean_variance_df$d, levels=c("1e+02","1e+03","1e+04
 ggplot(data_nonunique2, aes(i, mean, fill=d))+geom_bar(aes(fill=d), position="dodge", stat="identity", width=0.7)+theme(panel.grid.major=element_line(colour=NA,size=NA))+theme(panel.grid.minor=element_line(colour=NA,size=NA))+theme(plot.title=element_text(size=13))+theme(strip.background = element_rect(colour=NA, fill=NA))+theme(axis.line.x=element_line(colour="black"))+theme(axis.line.y=element_line(colour="black"))+theme(strip.text.x=element_text(size=11))+theme(axis.title=element_text(size=13, vjust=0.2))+theme(axis.text=element_text(size=11, colour="black"))+theme(axis.text.x=element_text(hjust=1, angle=45))+theme(legend.text=element_text(size=11))+theme(legend.title=element_text(size=13, face="plain"))+theme(panel.margin=unit(0.9, "lines"))+theme(legend.key.size=unit(0.5, "cm"))+theme(panel.background=element_rect(fill=NA))+theme(legend.key=element_rect(fill=NA))+labs(x="nucleotide site",y="SNP frequency (%)")+scale_colour_manual(values=c(color4,color5,color6))+scale_fill_manual(values=c(color4,color5,color6))+scale_x_discrete(drop=F)+scale_y_continuous(breaks=seq(-10,100,10), limits=c(-10,100), minor_breaks=c(10,30,50,70,90))+geom_errorbar(data=data_nonunique2,aes(x=i, ymin=mean-st_dev, ymax=mean+st_dev),position="dodge", stat="identity",width=0.7, alpha=0.6)
 
 
-#### FIGURE 4B: STANDARD DEVIATION VS INPUT DNA COPIES #################
+#### FIGURE 5C: STANDARD DEVIATION VS INPUT DNA COPIES - both datsets #################
 
 ggplot(mean_variance_df, aes(x=d,y=log10(st_dev),color=d, alpha=0.8, shape=m))+geom_point(size=2, position=position_dodge(width=0.5))+theme(panel.grid.major=element_line(colour=NA,size=NA))+theme(panel.grid.minor=element_line(colour=NA,size=NA))+theme(plot.title=element_text(size=13))+theme(strip.background = element_rect(colour=NA, fill=NA))+theme(axis.line.x=element_line(colour="black"))+theme(axis.line.y=element_line(colour="black"))+theme(strip.text.x=element_text(size=11))+theme(axis.title=element_text(size=13, vjust=0.2))+theme(axis.text=element_text(size=11, colour="black"))+theme(axis.text.x=element_text(hjust=0.5))+theme(legend.text=element_text(size=11))+theme(legend.title=element_text(size=13, face="plain"))+theme(panel.margin=unit(1, "lines"))+theme(legend.key.size=unit(0.5, "cm"))+theme(panel.background=element_rect(fill=NA))+theme(legend.key=element_rect(fill=NA))+labs(x="log10(dilution group)",y="log10(standard deviation)")+scale_y_continuous(breaks=seq(-2,2,1), limits=c(-2,2), minor_breaks=c(-2,-1,0,1,2))+scale_colour_manual(values=c(color1,color2,color3,color4,color5,color6))+scale_shape_manual(values=c(1,19))
 

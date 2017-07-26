@@ -18,7 +18,7 @@ color6 <- rgb(245,89,74, maxColorValue=255)
 color7 <- rgb(255,255,255, maxColorValue=255)
 
 ###############################################################################
-# Determine how many SNPs are deteced in each dilution by amplicon vs. unbiased
+# Determine how many SNPs are deteced in each dilution by amplicon vs. PCR-free
 ###############################################################################
 
 # read in the combined dataframe. 
